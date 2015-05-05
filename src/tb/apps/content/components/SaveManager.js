@@ -37,7 +37,7 @@ define(
              * Save all content updated
              */
             save: function () {
-                var contents = ContentContainer.getContentsUpdated(),
+                var contents = this.getContentsToSave(),
                     promises = [],
                     content,
                     key;
@@ -51,6 +51,10 @@ define(
                 }
 
                 return jQuery.when.apply(undefined, promises).promise();
+            },
+
+            getContentsToSave: function () {
+                return ContentContainer.getContentsUpdated();
             },
 
             /**

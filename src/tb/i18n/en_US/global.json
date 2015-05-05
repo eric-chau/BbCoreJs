@@ -28,6 +28,8 @@
     "content_management": "Content management",
     "contribution": "Contribution",
     "contents": "Contents",
+    "content_saved_sentence": "content modified and saved as draft",
+    "content_saved_sentence_plural": "contents modified and saved as draft",
     "contents_selector": "Contents selector",
     "create_a_draft": "Create a draft",
     "create_a_folder": "Create a folder",
@@ -96,8 +98,8 @@
     "new_page": "New page",
     "next": "Next",
     "no": "No",
+    "no_content_save": "No content to save",
     "no_one": "No one",
-
 
     "online": "Online",
 
@@ -131,6 +133,7 @@
     "roles_management": "Roles management",
 
     "save": "Save",
+    "save_draft": "Save draft",
     "saving_confirmation": "Saving Confirmation",
     "scheduling": "Scheduling",
     "search": "Search",

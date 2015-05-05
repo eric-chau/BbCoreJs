@@ -54,7 +54,16 @@ define(
              * Dispatch event `on:save:click``for all interested
              */
             saveService: function () {
-                Core.Mediator.publish('on:save:click');
+                var scopes = Core.Scope.scopes,
+                    eventName;
+
+                if (-1 !== scopes.indexOf('block')) {
+                    eventName = 'on:content:save:click';
+                } else if (scopes.indexOf('page')) {
+                    eventName = 'on:page:save:click';
+                }
+
+                Core.Mediator.publish(eventName);
             },
 
             /**

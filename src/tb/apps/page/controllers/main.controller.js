@@ -75,6 +75,9 @@ define(
 
                 Core.ApplicationManager.invokeService('contribution.main.index').done(function (service) {
                     service.done(function () {
+
+                        Core.Scope.register('contribution', 'page');
+
                         if (self.contribution_loaded !== true) {
                             self.repository.findCurrentPage().done(function (data) {
                                 if (data.hasOwnProperty(0)) {

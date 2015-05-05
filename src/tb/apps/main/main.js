@@ -110,7 +110,7 @@ define(
                 Core.ApplicationManager.invokeService('content.main.computeImagesInDOM');
 
                 // Listen event save
-                Core.Mediator.subscribe('on:save:click', function () {
+                Core.Mediator.subscribe('on:content:save:click', function () {
                     Core.ApplicationManager.invokeService('content.main.save');
                 });
 

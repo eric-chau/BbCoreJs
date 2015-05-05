@@ -59,7 +59,8 @@ define(
                 imports: ['content.repository'],
                 define: {
                     editionService: ['content.widget.Edition', 'content.manager'],
-                    getPluginManagerService: ['content.pluginmanager']
+                    getPluginManagerService: ['content.pluginmanager'],
+                    saveService: ['component!popin', 'component!translator']
                 }
             },
 
@@ -127,8 +128,25 @@ define(
             /**
              * Call method save into SaveManager
              */
-            saveService: function () {
-                return SaveManager.save();
+            saveService: function (req) {
+                var popin = req('component!popin').createPopIn(),
+                    translator = req('component!translator'),
+                    nbContents = SaveManager.getContentsToSave().length;
+
+                popin.setTitle(translator.translate('save_draft'));
+                popin.addButton('Ok', popin.hide);
+
+                if (nbContents > 0) {
+                    popin.mask();
+                    SaveManager.save().done(function () {
+                        popin.setContent(nbContents + ' ' + translator.translate((nbContents === 1) ? 'content_saved_sentence' : 'content_saved_sentence_plural'));
+                        popin.unmask();
+                    });
+                } else {
+                    popin.setContent(translator.translate('no_content_save'));
+                }
+
+                popin.display();
             },
 
             /**

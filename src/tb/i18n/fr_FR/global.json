@@ -19,6 +19,8 @@
     "change_password": "Changer de mot de passe ?",
     "clear_all": "Tout supprimer",
     "content_management": "Gestion de contenus",
+    "content_saved_sentence": "contenu modifié and et sauvegardé en tant que brouillon",
+    "content_saved_sentence_plural": "contenus modifiés and et sauvegardés en tant que brouillon",
     "contribution": "Contribution",
     "contents": "Contenus",
     "create_a_draft": "Créer un brouillon",
@@ -65,6 +67,7 @@
     "name": "Nom",
     "new_page": "Nouvelle page",
     "next": "Suivant",
+    "no_content_save": "Aucun contenu à sauvegardé",
     "no_one": "Aucun",
 
     "online": "En ligne",
@@ -87,6 +90,7 @@
     "roles_management": "Gestion des rôles",
 
     "save": "Sauvegarder",
+    "save_draft": "Sauvegarde des brouillons",
     "submit": "Valider",
     "scheduling": "Planification",
     "search": "Rechercher",
