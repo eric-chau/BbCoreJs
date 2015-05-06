@@ -14,6 +14,7 @@ define(['Core/Utils', 'content.pluginmanager', 'content.manager', 'jquery'], fun
 
     PluginManager.registerPlugin('imagepicker', {
 
+        MEDIA_TYPE : "Media/Image",
         onInit: function () {
             this.commandsQueue = [];
             this.mediaSelectorIsReady = false;
@@ -23,7 +24,7 @@ define(['Core/Utils', 'content.pluginmanager', 'content.manager', 'jquery'], fun
         },
 
         canApplyOnContext: function () {
-            return true;
+            return (this.getCurrentContentType() === this.MEDIA_TYPE);
         },
 
         displaySelector: function () {
@@ -37,10 +38,6 @@ define(['Core/Utils', 'content.pluginmanager', 'content.manager', 'jquery'], fun
             var selection = selections[0],
                 content = ContentManager.buildElement(selection.content);
             this.replaceCurrentContentWith(content);
-        },
-
-        onContextChange: function (context) {
-            console.log(context);
         },
 
         replaceCurrentContentWith: function (content) {
