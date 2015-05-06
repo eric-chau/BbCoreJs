@@ -28,6 +28,7 @@ define(
         'content.container',
         'content.repository',
         'text!content/tpl/dropzone',
+        'component!mask',
         'jsclass'
     ],
     function (Core,
@@ -54,6 +55,10 @@ define(
             defaultPicturePath: '/resources/toolbar/html/img/filedrop.png',
             contentSelectedClass: 'bb-content-selected',
 
+
+            initialize: function () {
+                this.maskMng = require('component!mask').createMask({});
+            },
             /**
              * Search all contentset with dragzone="true" attribute
              * and dont have data-bb-id attribute for build element
@@ -187,6 +192,35 @@ define(
                     this.addDefaultZoneInContentSet(true);
                 }
             },
+
+            replaceWith: function (oldContent, newContent) {
+                /* elements */
+                var elementInfos = {},
+                    renderModeParam =  oldContent.getParameters('rendermode'),
+                    renderMode = (renderModeParam !== undefined) ? renderModeParam.value : undefined,
+                    oldContentParent = oldContent.getParent(),
+                    oldContentHtml = oldContent.jQueryObject,
+                    self = this;
+                this.maskMng.mask(oldContentHtml);
+                newContent.getHtml(renderMode).done(function (html) {
+                    jQuery(oldContentHtml).replaceWith(html);
+                    self.computeImages();
+                    oldContentParent.getData("elements").done(function (elements) {
+                        jQuery.each(elements, function (key, data) {
+                            if (data.uid === oldContent.uid) {
+                                elementInfos[key] = { uid: newContent.uid, type: newContent.type };
+                            }
+                            return true;
+                        });
+                        oldContentParent.setElements(elementInfos);
+                    }).always(function () {
+                        self.maskMng.unmask(oldContentHtml);
+                    });
+                }).always(function () {
+                    self.maskMng.unmask(oldContentHtml);
+                });
+            },
+
 
             /**
              * Retrieve a content by a node (jQuery)
