@@ -20,6 +20,7 @@ define(
         'component!rangeselector',
         'jquery',
         'text!tb.component/medialibrary/templates/layout.tpl',
+        'nunjucks',
         'BackBone',
         'mediaItem.renderer',
         'component!searchengine',
@@ -42,6 +43,7 @@ define(
         RangeSelector,
         jQuery,
         layout,
+        nunjucks,
         BackBone,
         ItemRenderer
     ) {
@@ -88,7 +90,7 @@ define(
                     this.dialog.addOption("open", jQuery.proxy(this.onOpen, null, this));
                     this.dialog.addOption("close", jQuery.proxy(this.onClose, this, this));
                     this.dialog.addOption("focus", jQuery.proxy(this.onFocus, this));
-                    this.widget = jQuery(layout).clone();
+                    this.widget = jQuery(nunjucks.renderString(layout, {}));
                     this.handleViewModeChange();
                     this.loadingMap = {};
                     this.openedMediaFolder = null;

@@ -209,8 +209,8 @@ define(
                         jQuery.each(elements, function (key, data) {
                             if (data.uid === oldContent.uid) {
                                 elementInfos[key] = { uid: newContent.uid, type: newContent.type };
+                                return true;
                             }
-                            return true;
                         });
                         oldContentParent.setElements(elementInfos);
                     }).always(function () {

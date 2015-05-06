@@ -1,0 +1,13 @@
+[1mdiff --git a/src/tb/component/medialibrary/templates/layout.tpl b/src/tb/component/medialibrary/templates/layout.tpl[m
+[1mindex fc12fe6..9fe421b 100644[m
+[1m--- a/src/tb/component/medialibrary/templates/layout.tpl[m
+[1m+++ b/src/tb/component/medialibrary/templates/layout.tpl[m
+[36m@@ -1,7 +1,7 @@[m
+ <div id="library-pane-wrapper" class="bb5-windowpane-wrapper windowpane-treeview">[m
+     <div class="bb5-windowpane-tree ui-layout-pane ui-layout-west">[m
+         <div class="ui-layout-north">[m
+[31m-            <p><strong data-i18n="toolbar.selector.select_folder">Select a folder</strong></p>[m
+[32m+[m[32m            <p><strong data-i18n="toolbar.selector.select_folder">{{ "select_a_mediafolder" | trans }}</strong></p>[m
+         </div>[m
+ [m
+ <div class="inner-center layout-overflow-scroll">[m
